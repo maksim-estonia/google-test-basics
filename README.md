@@ -1,5 +1,18 @@
 # Google Test: basics
 
+- [Google Test: basics](#google-test-basics)
+  - [Setup](#setup)
+    - [Step 1: install Bazel](#step-1-install-bazel)
+    - [Step 2: Set up a Bazel workspace](#step-2-set-up-a-bazel-workspace)
+    - [Step 3: Create and run a binary](#step-3-create-and-run-a-binary)
+  - [GoogleTest Primer](#googletest-primer)
+    - [1-assertions](#1-assertions)
+    - [2-factorial](#2-factorial)
+    - [3-test-fixtures](#3-test-fixtures)
+  - [Discussion](#discussion)
+    - [Test case, test suite, test fixture](#test-case-test-suite-test-fixture)
+    - [EXPECT_* and ASSERT_*](#expect_-and-assert_)
+
 ## Setup
 
 ### Step 1: install Bazel 
@@ -131,8 +144,6 @@ To create a fixture:
   ## Discussion
 
   ### Test case, test suite, test fixture
-
-  _The definition of test case, test suite, test fixture_
 
 Historically, googletest started to use the term _Test Case_ for grouping related tests, whereas current publications, including ISTQB materials and various textbooks on software quality, use the term _Test Suite_ for this.
 
