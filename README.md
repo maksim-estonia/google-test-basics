@@ -1,7 +1,7 @@
 # Google Test: basics
 
 - [Google Test: basics](#google-test-basics)
-  - [Setup](#setup)
+  - [Setup (Bazel)](#setup-bazel)
     - [Step 1: install Bazel](#step-1-install-bazel)
     - [Step 2: Set up a Bazel workspace](#step-2-set-up-a-bazel-workspace)
     - [Step 3: Create and run a binary](#step-3-create-and-run-a-binary)
@@ -12,8 +12,9 @@
   - [Discussion](#discussion)
     - [Test case, test suite, test fixture](#test-case-test-suite-test-fixture)
     - [EXPECT_* and ASSERT_*](#expect_-and-assert_)
+  - [Setup (CMake)](#setup-cmake)
 
-## Setup
+## Setup (Bazel)
 
 ### Step 1: install Bazel 
 
@@ -159,7 +160,56 @@ The related term _Test_, as it is used in googletest, corresponds to the term _T
 
 The assertions come in pairs that test the same thing but have different effects on the current function. `ASSERT_*` versions generate fatal failures when they fail, and **abort the current function**. `EXPECT_*` versions generate nonfatal failures, which don't abort the current function. Usually `EXPECT_*` are preferred, as they allow more than one failure to be reported in a test. However, you should use `ASSERT_*` if it doesn't make sense to continue when the assertion in question fails.
 
+## Setup (CMake)
 
+1. Create a file named CMakeLists.txt:
+
+  ```
+  cmake_minimum_required(VERSION 3.14)
+  project(my_project)
+
+  # GoogleTest requires at least C++11
+  set(CMAKE_CXX_STANDARD 11)
+
+  include(FetchContent)
+  FetchContent_Declare(
+    googletest
+    URL https://github.com/google/googletest/archive/609281088cfefc76f9d0ce82e1ff6c30cc3591e5.zip
+  )
+  # For Windows: Prevent overriding the parent project's compiler/linker settings
+  set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+  FetchContent_MakeAvailable(googletest)
+  ```
+
+2. With GoogleTest declared as a dependency, you can use GoogleTest code within your own project
+
+3. To build the code, add the following to the end of your `CMakeLists.txt` file:
+
+  ```
+  enable_testing()
+
+  add_executable(
+    hello_test
+    hello_test.cc
+  )
+  target_link_libraries(
+    hello_test
+    gtest_main
+  )
+
+  include(GoogleTest)
+  gtest_discover_tests(hello_test)
+  ```
+
+4. Now build and run:
+
+  ```
+  cmake -S . -B build
+
+  cmake --build build
+
+  cd build && ctest
+  ```
 
 
 
