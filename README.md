@@ -15,7 +15,7 @@
   - [Setup (CMake)](#setup-cmake)
     - [4-cmake](#4-cmake)
   - [C++ Unit testing](#c-unit-testing)
-  - [5-google-test-demo](#5-google-test-demo)
+    - [5-google-test-demo](#5-google-test-demo)
 
 ## Setup (Bazel)
 
@@ -222,7 +222,7 @@ The assertions come in pairs that test the same thing but have different effects
 
 ## C++ Unit testing
 
-## 5-google-test-demo
+### 5-google-test-demo
 
 Based on [video](https://www.youtube.com/watch?v=16FI1-d2P4E)
 
