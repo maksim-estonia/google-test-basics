@@ -1,1 +1,5 @@
 4-cmake/build
+5-google-test-demo/bazel-bin
+5-google-test-demo/bazel-out
+5-google-test-demo/bazel-testlogs
+5-google-test-demo/bazel-5-google-test-demo
