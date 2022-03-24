@@ -79,7 +79,7 @@ TEST_P(WithdrawAccountTest, FinalBalance)
 INSTANTIATE_TEST_CASE_P(Default, WithdrawAccountTest,
     testing::Values(
         account_state{100,50,50,true},
-        account_state{100,200,100,true}
+        account_state{100,200,100,false}
     ));
 
 int main (int argc, char* argv[])
